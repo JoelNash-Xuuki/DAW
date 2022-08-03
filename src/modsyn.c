@@ -4,26 +4,27 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv){
-
   OSCMOD *oscs;
   MIXOUT *mixes;
   NOISEMOD *noises;
   NOISEMOD *sahs;
   VCFMOD *vcfs;
+  ENVMOD *envs;
   char modname[64];
   int osc_count= 0;
   int mix_count= 0;
   int noise_count= 0;
   int sah_count= 0;
   int vcf_count= 0;
-  float duration= 10.0;
+  int env_count= 0;
   int i;
 
-  oscs = (OSCMOD *) malloc(MAXMODS * sizeof(OSCMOD));
-  mixes = (MIXOUT *) malloc(MAXMODS * sizeof(MIXOUT));
-  noises = (NOISEMOD *) malloc(MAXMODS * sizeof(NOISEMOD));
-  sahs = (NOISEMOD *) malloc(MAXMODS * sizeof(NOISEMOD));
-  vcfs = (VCFMOD *) malloc(MAXMODS * sizeof(VCFMOD));
+  oscs= (OSCMOD *) malloc(MAXMODS * sizeof(OSCMOD));
+  mixes= (MIXOUT *) malloc(MAXMODS * sizeof(MIXOUT));
+  noises= (NOISEMOD *) malloc(MAXMODS * sizeof(NOISEMOD));
+  sahs= (NOISEMOD *) malloc(MAXMODS * sizeof(NOISEMOD));
+  vcfs= (VCFMOD *) malloc(MAXMODS * sizeof(VCFMOD));
+  envs= (ENVMOD *) malloc(MAXMODS * sizeof(ENVMOD));
 
   while(scanf("%s", modname ) != EOF){
     if(! strcmp(modname, "OSC")){
@@ -41,8 +42,8 @@ int main(int argc, char **argv){
     else if(! strcmp(modname, "MIXOUT")){
       read_mix(mixes, mix_count++);
     }
-    else if(! strcmp(modname, "DURATION")){
-      scanf("%f", &duration);
+    else if(! strcmp(modname, "ENV")){
+      read_env(envs, env_count++);
     } else {
       fprintf(stderr,"%s is an unknown module\n", modname);
     }
@@ -63,10 +64,13 @@ int main(int argc, char **argv){
   for(i = 0; i < vcf_count; i++){
     print_vcf(vcfs[i]);
   }
+  for(i = 0; i < env_count; i++){
+    print_env(envs[i]);
+  }
   for(i = 0; i < mix_count; i++){
     print_mix(mixes[i]);
   }
-  print_score(duration);
+  print_score();
 }
 
 void read_osc(OSCMOD *oscs, int count){
@@ -185,6 +189,15 @@ void print_vcf(VCFMOD vcf){
 	 vcf.cutoff, vcf.resonance);
 }
 
+void read_env(ENVMOD *unit, int count){
+  scanf("%s %s", unit[count].sig_out,unit[count].amp);
+}
+
+void print_env(ENVMOD env){
+  printf("%s expsegr 0.01, 0.1, %s, 0.1, 0.001", env.sig_out, env.amp);
+}
+
+
 void print_header(void){
   printf("<CsoundSynthesizer>\n");
   printf("<CsOptions>\n");
@@ -194,7 +207,7 @@ void print_header(void){
   printf("kr = 4410\n");
   printf("ksmps = 10\n");
   printf("nchnls = 1\n");
-  printf("<CsInstruments>\n");
+  printf("<CsInstruments>\n\n");
   printf("\tinstr 1\n");
   printf("isine = 1\n");
   printf("itriangle = 2\n");
@@ -202,9 +215,10 @@ void print_header(void){
   printf("isquare = 4\n");
   printf("ipulse = 5\n");
   printf("ifrq cpsmidib 1\n");
+
 }
 
-void print_score(float duration){
+void print_score(){
   printf("\tendin\n\n");
   printf("</CsInstruments>\n");
   printf("<CsScore>\n\n");

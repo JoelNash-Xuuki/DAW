@@ -7,6 +7,7 @@ kr = 4410
 ksmps = 10
 nchnls = 1
 <CsInstruments>
+
 	instr 1
 isine = 1
 itriangle = 2

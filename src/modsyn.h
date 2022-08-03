@@ -31,17 +31,30 @@ typedef struct {
   char resonance[SYNMOD_CHARS];
 } VCFMOD;
 
+typedef struct {
+  char amp[SYNMOD_CHARS];
+  char sig_out[SYNMOD_CHARS];
+} ENVMOD;
+
 void read_osc(OSCMOD *oscs, int count);
 void print_osc(OSCMOD osc);
+
 void read_mix(MIXOUT *mix, int count);
 void print_mix(MIXOUT mix);
+
 void read_noise(NOISEMOD *unit, int count);
 void print_noise(NOISEMOD noise);
 void print_sah(NOISEMOD noise);
+
 void read_vcf(VCFMOD *unit, int count);
 void print_vcf(VCFMOD vcf);
+
+void read_env(ENVMOD *oscs, int count);
+void print_env(ENVMOD osc);
+
 void print_header(void);
-void print_score(float duration);
+void print_score();
+
 void initialize_globals( OSCMOD *oscs, 
 						 int osc_count, 
 					     NOISEMOD *noises, 
