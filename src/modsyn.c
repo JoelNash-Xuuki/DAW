@@ -4,23 +4,27 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv){
-  OSCMOD *oscs;
+  INSTR *instrs;
   MIXOUT *mixes;
+  OSCMOD *oscs;
   NOISEMOD *noises;
   NOISEMOD *sahs;
   VCFMOD *vcfs;
   ENVMOD *envs;
+
   char modname[64];
-  int osc_count= 0;
+  int instr_count= 0;
   int mix_count= 0;
+  int osc_count= 0;
   int noise_count= 0;
   int sah_count= 0;
   int vcf_count= 0;
   int env_count= 0;
   int i;
 
-  oscs= (OSCMOD *) malloc(MAXMODS * sizeof(OSCMOD));
+  instrs= (INSTR *) malloc(MAXMODS * sizeof(INSTR));
   mixes= (MIXOUT *) malloc(MAXMODS * sizeof(MIXOUT));
+  oscs= (OSCMOD *) malloc(MAXMODS * sizeof(OSCMOD));
   noises= (NOISEMOD *) malloc(MAXMODS * sizeof(NOISEMOD));
   sahs= (NOISEMOD *) malloc(MAXMODS * sizeof(NOISEMOD));
   vcfs= (VCFMOD *) malloc(MAXMODS * sizeof(VCFMOD));
@@ -29,6 +33,12 @@ int main(int argc, char **argv){
   while(scanf("%s", modname ) != EOF){
     if(! strcmp(modname, "OSC")){
       read_osc(oscs, osc_count++);
+    }
+    else if(! strcmp(modname, "INSTR")){
+      read_instr(instrs, instr_count++);
+    }
+	else if(! strcmp(modname, "MIXOUT")){
+      read_mix(mixes, mix_count++);
     }
     else if(! strcmp(modname, "NOISE")){
       read_noise(noises, noise_count++);
@@ -39,9 +49,7 @@ int main(int argc, char **argv){
     else if(! strcmp(modname, "VCF")){
       read_vcf(vcfs, vcf_count++);
     }
-    else if(! strcmp(modname, "MIXOUT")){
-      read_mix(mixes, mix_count++);
-    }
+    
     else if(! strcmp(modname, "ENV")){
       read_env(envs, env_count++);
     } else {
@@ -50,26 +58,35 @@ int main(int argc, char **argv){
   }
 
   print_header();
-  initialize_globals(oscs, osc_count, noises, noise_count, sahs,   
-     sah_count, vcfs, vcf_count);
-  for(i = 0; i < osc_count; i++){
-    print_osc(oscs[i]);
+
+  initialize_globals(oscs, osc_count, 
+				     noises, noise_count, 
+					 sahs, sah_count, 
+					 vcfs, vcf_count);
+
+
+  for(i = 0; i < instr_count; i++){
+    print_instr(instrs[i]);
   }
-  for(i = 0; i < noise_count; i++){
-    print_noise(noises[i]);
-  }
-  for(i = 0; i < sah_count; i++){
-    print_sah(sahs[i]);
-  }
-  for(i = 0; i < vcf_count; i++){
-    print_vcf(vcfs[i]);
-  }
-  for(i = 0; i < env_count; i++){
-    print_env(envs[i]);
-  }
-  for(i = 0; i < mix_count; i++){
-    print_mix(mixes[i]);
-  }
+
+    for(i = 0; i < osc_count; i++){
+      print_osc(oscs[i]);
+    }
+    for(i = 0; i < noise_count; i++){
+      print_noise(noises[i]);
+    }
+    for(i = 0; i < sah_count; i++){
+      print_sah(sahs[i]);
+    }
+    for(i = 0; i < vcf_count; i++){
+      print_vcf(vcfs[i]);
+    }
+    for(i = 0; i < env_count; i++){
+      print_env(envs[i]);
+    }
+    for(i = 0; i < mix_count; i++){
+      print_mix(mixes[i]);
+    }
   print_score();
 }
 
@@ -135,11 +152,16 @@ void read_mix(MIXOUT *mix, int count){
   scanf("%s %s", mix[count].outvar, mix[count].amplitude);
 }
 
+void print_instr(INSTR instr){
+ 
+}
+
 void print_mix( MIXOUT mix){
   float amplitude;
   sscanf(mix.amplitude, "%f", &amplitude);
   printf ("kenv linseg 0,.05,%f,p3-0.1,%f,.05,0\n", amplitude, amplitude);
   printf("out (%s)*kenv\n", mix.outvar);
+  printf("\tendin\n\n");
 }
 
 void read_noise(NOISEMOD *unit, int count){
@@ -208,18 +230,16 @@ void print_header(void){
   printf("ksmps = 10\n");
   printf("nchnls = 1\n");
   printf("<CsInstruments>\n\n");
-  printf("\tinstr 1\n");
+  printf("\tinstr 1\n", instr.no);
   printf("isine = 1\n");
   printf("itriangle = 2\n");
   printf("isawtooth = 3\n");
   printf("isquare = 4\n");
   printf("ipulse = 5\n");
   printf("ifrq cpsmidib 1\n");
-
 }
 
 void print_score(){
-  printf("\tendin\n\n");
   printf("</CsInstruments>\n");
   printf("<CsScore>\n\n");
   printf("f1 0 8192 10 1 ; sine\n");
@@ -232,14 +252,10 @@ void print_score(){
   printf("</CsoundSynthesizer>\n");
 }
 
-void initialize_globals(OSCMOD *oscs, 
-						int osc_count, 
-						NOISEMOD *noises, 
-			  			int noise_count, 
-						NOISEMOD *sahs, 
-						int sah_count,
-			 			VCFMOD *vcfs, 
-						int vcf_count){
+void initialize_globals(OSCMOD *oscs, int osc_count, 
+						NOISEMOD *noises, int noise_count, 
+						NOISEMOD *sahs, int sah_count,
+			 			VCFMOD *vcfs, int vcf_count){
   int i;
   
   for(i = 0; i < osc_count; i++){

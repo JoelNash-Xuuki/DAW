@@ -2,6 +2,10 @@
 #define MAXMODS (256)
 
 typedef struct {
+  char no[SYNMOD_CHARS];
+} INSTR;
+
+typedef struct {
   char frequency[SYNMOD_CHARS];
   char sig_out[SYNMOD_CHARS];
   char sig_am[SYNMOD_CHARS];
@@ -36,6 +40,10 @@ typedef struct {
   char sig_out[SYNMOD_CHARS];
 } ENVMOD;
 
+
+void read_instr(INSTR *instr, int count);
+void print_instr(INSTR instr);
+
 void read_osc(OSCMOD *oscs, int count);
 void print_osc(OSCMOD osc);
 
@@ -55,12 +63,8 @@ void print_env(ENVMOD osc);
 void print_header(void);
 void print_score();
 
-void initialize_globals( OSCMOD *oscs, 
-						 int osc_count, 
-					     NOISEMOD *noises, 
-			 			 int noise_count, 
-						 NOISEMOD *sahs, 
-						 int sah_count,
-			 			 VCFMOD *vcfs,
-						 int vcf_count);
+void initialize_globals( OSCMOD *oscs, int osc_count, 
+					     NOISEMOD *noises, int noise_count, 
+						 NOISEMOD *sahs, int sah_count,
+			 			 VCFMOD *vcfs, int vcf_count);
 

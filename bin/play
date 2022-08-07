@@ -1,0 +1,3 @@
+csound -d -B 4096 -o$HOME/audio/072022-2014.wav 0701220803.csd
+#csound -d -B 4096 -o072022-2014.wav 0701220803.csd
+

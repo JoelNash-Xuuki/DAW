@@ -1,0 +1,1 @@
+./bin/modsyn < patches/instr > src/test.csd
