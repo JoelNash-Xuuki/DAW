@@ -1,3 +1,17 @@
 Design patch modules
 Read a midi file
 Playback/Render sound
+
+Sound-designer intends to facilitate a music writting/production workflow.  
+It has the ability to generate scores that are a pdf file, process that score as a  midi files
+against sounds designed using digital signal processing.
+
+How to configure and install it
+
+An example of how to use it or get it running
+To write a score. Open a .ly file in the src directory.
+To generate the score and pdf file run the command comply
+which lives in bin/ from the root dir.
+
+The license that the project is offered under
+How to contribute to it
