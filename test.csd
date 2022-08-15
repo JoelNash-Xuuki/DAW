@@ -8,21 +8,15 @@ ksmps = 10
 nchnls = 1
 <CsInstruments>
 
-	instr 1
+	instr -467015344
 isine = 1
 itriangle = 2
 isawtooth = 3
 isquare = 4
 ipulse = 5
 ifrq cpsmidib 1
-ga1 init 0.0
-ga2 init 0.0
-ga1 oscil 1.0, ifrq, itriangle
-ga1 = 1 + (-1.000000*ga1 + -1.000000)
-ga2 randi 1.0, 100, 1
-ga2 = 1 + (-1.000000*ga2 + -1.000000)
 kenv linseg 0,.05,3000.000000,p3-0.1,3000.000000,.05,0
-out (ga1)*kenv
+out (a1)*kenv
 	endin
 
 </CsInstruments>

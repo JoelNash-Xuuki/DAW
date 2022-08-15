@@ -8,14 +8,7 @@ ksmps = 10
 nchnls = 1
 <CsInstruments>
 
-	instr 1
-isine = 1
-itriangle = 2
-isawtooth = 3
-isquare = 4
-ipulse = 5
-ifrq cpsmidib 1
-	instr 2
+	instr -1610464656
 isine = 1
 itriangle = 2
 isawtooth = 3

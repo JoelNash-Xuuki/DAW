@@ -2,7 +2,7 @@ Design patch modules
 Read a midi file
 Playback/Render sound
 
-Sound-designer intends to facilitate a music writting/production workflow.  
+Sound-designer intends to facilitate a music writing/production workflow.  
 It has the ability to generate scores that are a pdf file, process that score as a  midi files
 against sounds designed using digital signal processing.
 

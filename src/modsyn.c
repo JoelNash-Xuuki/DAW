@@ -153,7 +153,18 @@ void read_mix(MIXOUT *mix, int count){
 }
 
 void print_instr(INSTR instr){
- 
+  printf("\tinstr %d\n", instr.no);
+  printf("isine = 1\n");
+  printf("itriangle = 2\n");
+  printf("isawtooth = 3\n");
+  printf("isquare = 4\n");
+  printf("ipulse = 5\n");
+  printf("ifrq cpsmidib 1\n");
+
+}
+
+void read_instr(INSTR *instrs, int count){
+  scanf("%s, instrs[count].no");
 }
 
 void print_mix( MIXOUT mix){
@@ -171,7 +182,6 @@ void read_noise(NOISEMOD *unit, int count){
 						  unit[count].omin, 
 						  unit[count].omax);
 }
-
 
 void print_noise(NOISEMOD noise){
   float omin, omax, mo2;
@@ -219,7 +229,6 @@ void print_env(ENVMOD env){
   printf("%s expsegr 0.01, 0.1, %s, 0.1, 0.001", env.sig_out, env.amp);
 }
 
-
 void print_header(void){
   printf("<CsoundSynthesizer>\n");
   printf("<CsOptions>\n");
@@ -230,13 +239,6 @@ void print_header(void){
   printf("ksmps = 10\n");
   printf("nchnls = 1\n");
   printf("<CsInstruments>\n\n");
-  printf("\tinstr 1\n", instr.no);
-  printf("isine = 1\n");
-  printf("itriangle = 2\n");
-  printf("isawtooth = 3\n");
-  printf("isquare = 4\n");
-  printf("ipulse = 5\n");
-  printf("ifrq cpsmidib 1\n");
 }
 
 void print_score(){

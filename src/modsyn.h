@@ -40,7 +40,6 @@ typedef struct {
   char sig_out[SYNMOD_CHARS];
 } ENVMOD;
 
-
 void read_instr(INSTR *instr, int count);
 void print_instr(INSTR instr);
 
