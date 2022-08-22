@@ -6,7 +6,7 @@ Sound-designer intends to facilitate a music writing/production workflow.
 It has the ability to generate scores that are a pdf file, process that score as a  midi files
 against sounds designed using digital signal processing.
 
-How to configure and install it
+How to configure and install i
 
 An example of how to use it or get it running
 To write a score. Open a .ly file in the src directory.

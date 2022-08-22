@@ -8,13 +8,24 @@ ksmps = 10
 nchnls = 1
 <CsInstruments>
 
-	instr -1610464656
+	instr 1
 isine = 1
 itriangle = 2
 isawtooth = 3
 isquare = 4
 ipulse = 5
 ifrq cpsmidib 1
+	instr 2
+isine = 1
+itriangle = 2
+isawtooth = 3
+isquare = 4
+ipulse = 5
+ifrq cpsmidib 1
+kenv linseg 0,.05,3000.000000,p3-0.1,3000.000000,.05,0
+out (a1)*kenv
+	endin
+
 kenv linseg 0,.05,3000.000000,p3-0.1,3000.000000,.05,0
 out (a1)*kenv
 	endin

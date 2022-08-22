@@ -1,5 +1,5 @@
-SRC		= src/modsyn.c
+SRC		= src/modsyn.cpp
 CC		= g++
 
 modsyn: $(SRC) 
-	$(CC) $(SRC) -o bin/modsyn
+	$(CC) $(SRC) -o ~/.bin/modsyn
