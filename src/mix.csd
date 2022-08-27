@@ -9,28 +9,28 @@ nchnls = 2
 0dbfs  = 1
 tuning = 400.9
 
-	instr	    6
+			instr 6
 iamp	    = 	ampdb(p4)
 ifreq	    = 	p5
 ifn		    = 	p6
-;irvbsnd     = 	p7
-;icmbsnd     =   p8
+;irvbsnd    = 	p7
+;icmbsnd    =   p8
 			a1	loscil	iamp, ifreq, ifn
 ;garvb		=		garvb+(a1*irvbsnd)
 ;gacmb		=		gacmb+(a1*icmbsnd)
 	
-	outs a1, a1
+	out a1
 	endin
 
 </CsInstruments>
 <CsScore>
-f1 0 0 1 "test.wav" 0 4 1
-f2 0 0 1 "test.wav" 0 4 2
+f1 0 0 1 "/home/joel/.audio/072022-2014.wav" 0 4 1
+f2 0 0 1 "/home/joel/.audio/072022-2014.wav" 0 4 2
 t 0 84
 ;a 0 
 ;i1 0 8 0 2 2 2
-i6 0 48 0.5 260 1
-i6 0 48 0.5 260 2 
+i6 0 40 0.0001 260 1
+;i6 0 40 0.0001 260 2 
 f 0 4 
 s
 </CsScore>

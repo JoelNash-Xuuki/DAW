@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--F test.mid
+-F tmp/0612222101-smile.mid
 </CsOptions>
 <CsInstruments>
 
@@ -14,6 +14,8 @@ massign 2, 2
 massign 3, 3
 massign 4, 4
 massign 5, 5
+massign 6, 6
+massign 7, 7
 
 		instr 1
 idec 	= 1
@@ -25,6 +27,7 @@ asig 	oscili  kenv*iamp, ifrq, 1
 		outch 2, asig
 		endin
 
+
 		instr 2
 idur 	= 0.01
 iamp 	veloc 0, 1
@@ -32,8 +35,8 @@ ifrq 	cpsmidib 1
 
 iatk	=		.01
 irel	=		.02
-icf1	=		800
-icf2	=		800
+icf1	=		500
+icf2	=		500
 ibw1	=		100
 ibw2	=		100
 ipan	=		0.5
@@ -72,6 +75,29 @@ afilt	reson	asig*0.01, kcf, kbw, 2
 		endin
 
 		instr 4
+idur 	= 0.01
+iamp 	veloc 0, 0.4
+ifrq 	cpsmidib 1
+
+iatk	=		.01
+irel	=		.01
+icf1	=		100
+icf2	=		300
+ibw1	=		200
+ibw2	=		1000
+ipan	=		0.5
+
+kenv	expseg	.001, iatk, iamp, idur/6, iamp*.1, idur-(iatk+irel+idur/6), iamp*.1, irel,.01
+asig	rand	ifrq
+kcf		expon	icf1, idur, icf2
+kbw		line	ibw1, idur, ibw2
+afilt	reson	asig*0.001, kcf, kbw, 2
+
+	    outch 1, (afilt*kenv)*ipan
+		outch 2, (afilt*kenv)*(1-ipan)
+		endin
+
+		instr 5
 idec 	= 1
 iamp 	veloc 0, 1
 ifrq 	cpsmidib 1
@@ -81,9 +107,9 @@ asig 	oscili  kenv*iamp, ifrq, 1
 		outch 2, asig
 		endin
 
-		instr 5
-idec 	= 0.25
-iamp 	veloc 0, 1
+		instr 6
+idec 	= 1
+iamp 	veloc 0, 0.25
 ifrq 	cpsmidib 1
 kenv 	expsegr 0.9, idec, 0.1, 0.5, 0.001
 asig 	oscili  kenv*iamp, ifrq, 1 
@@ -91,9 +117,23 @@ asig 	oscili  kenv*iamp, ifrq, 1
 		outch 2, asig
 		endin
 
+
+
+		instr 7
+idec 	= 0.25
+iamp 	veloc 0, 1
+ifrq 	cpsmidib 1
+kenv 	expsegr 0.9, idec, 0.1, p3, 0.001
+asig 	oscili  kenv*iamp, ifrq, 1 
+	    outch 1, asig
+		outch 2, asig
+		endin
+
 </CsInstruments>
 <CsScore>
-f0 40
+
+a0 0 0
+f0 70
 t 0 84
 f1 0 16384 10 1
 
