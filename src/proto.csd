@@ -20,11 +20,15 @@ massign 7, 7
 		instr 1
 idec 	= 1
 iamp 	veloc 0,1 
-ifrq 	cpsmidib 1
+kfrq 	cpsmidib 1
 kenv 	expsegr 0.01, idec, 0.1, 0.5, 0.001
-asig 	oscili  kenv*iamp, ifrq, 1 
-		outch 1, asig
-		outch 2, asig
+
+asig1 	oscili  kenv*iamp, kfrq, 1 
+asig2	oscili  kenv*iamp, kfrq*1.005, 1
+asig3	oscili  kenv*iamp, kfrq*.995, 1
+amix	= asig1+(asig2*0.4)+(asig3*0.4)
+		outch 1, amix
+		outch 2, amix
 		endin
 
 
