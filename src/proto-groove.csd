@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
--F tmp/0612222101-smile.mid
+-F tmp/groove.mid
 </CsOptions>
 <CsInstruments>
 
@@ -39,10 +39,10 @@ ifrq 	cpsmidib 1
 
 iatk	=		.01
 irel	=		.02
-icf1	=		500
-icf2	=		500
+icf1	=		1500
+icf2	=		700
 ibw1	=		100
-ibw2	=		100
+ibw2	=		1000
 ipan	=		0.5
 
 kenv	expseg	.001, iatk, iamp, idur/6, iamp*.4, idur-(iatk+irel+idur/6), iamp*.6, irel,.01
@@ -56,16 +56,16 @@ afilt	reson	asig*0.01, kcf, kbw, 2
 		endin
 
 		instr 3
-idur 	= 0.01
-iamp 	veloc 0, 0.5
+idur 	= 0.001
+iamp 	veloc 0, 0.2
 ifrq 	cpsmidib 1
 
-iatk	=		.01
+iatk	=		.02
 irel	=		.01
 icf1	=		15000
 icf2	=		15000
-ibw1	=		800
-ibw2	=		800
+ibw1	=		100
+ibw2	=		400
 ipan	=		0.5
 
 kenv	expseg	.001, iatk, iamp, idur/6, iamp*.4, idur-(iatk+irel+idur/6), iamp*.6, irel,.01
