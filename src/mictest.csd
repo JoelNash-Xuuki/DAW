@@ -8,6 +8,9 @@ ksmps = 64
 nchnls = 2
 0dbfs  = 1
 
+gacmb	init 0
+garvb	init 0
+
 	instr 1 
 
 	ain1 inch 1
@@ -21,6 +24,9 @@ nchnls = 2
 a1	loscil 0.5, 440, p4
 	out  a1
 	endin
+
+
+
 
 </CsInstruments>
 <CsScore>
