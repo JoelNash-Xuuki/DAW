@@ -18,17 +18,32 @@ massign 6, 6
 massign 7, 7
 
 		instr 1
+ivibdel= 5
 idec 	= 1
 iamp 	veloc 0,1 
 kfrq 	cpsmidib 1
-kenv 	expsegr 0.01, idec, 0.1, 0.5, 0.001
 
-asig1 	oscili  kenv*iamp, kfrq, 1 
-asig2	oscili  kenv*iamp, kfrq*1.005, 1
-asig3	oscili  kenv*iamp, kfrq*.995, 1
+kenv 	expsegr 0.01, idec, 0.1, 0.5, 0.001
+kvibenv	linseg 0, ivibdel, 1, p3-ivibdel, .3
+klfo	oscil kvibenv*6, kfrq*0.005, 1
+
+
+asig4	foscil 
+asig1 	oscili  kenv*iamp, kfrq+klfo, 1 
+asig2	oscili  kenv*iamp, kfrq*1.005+klfo, 1
+asig3	oscili  kenv*iamp, kfrq*.995+klfo, 1
+
+
+
 amix	= asig1+(asig2*0.1)+(asig3*0.1)
-		outch 1, amix
-		outch 2, amix
+
+anoise	rand kfrq
+
+afilt	tone amix+(anoise*kenv*0.0002*klfo), 500
+
+
+		outch 1, afilt
+		outch 2, afilt
 		endin
 
 

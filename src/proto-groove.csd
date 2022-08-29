@@ -17,18 +17,39 @@ massign 5, 5
 massign 6, 6
 massign 7, 7
 
+gifn	ftgen	0,0, 257, 9, .5,1,270
+
 		instr 1
+ivibdel= 5
 idec 	= 1
 iamp 	veloc 0,1 
 kfrq 	cpsmidib 1
+
 kenv 	expsegr 0.01, idec, 0.1, 0.5, 0.001
+kvibenv	linseg 0, ivibdel, 1, p3-ivibdel, .3
+klfo	oscil kvibenv*2, kfrq*0.003, 1
+kindex  expon 0.8, 0.1, 0.8
+
+
 
 asig1 	oscili  kenv*iamp, kfrq, 1 
-asig2	oscili  kenv*iamp, kfrq*1.005, 1
-asig3	oscili  kenv*iamp, kfrq*.995, 1
-amix	= asig1+(asig2*0.1)+(asig3*0.1)
-		outch 1, amix
-		outch 2, amix
+asig2	oscili  kenv*iamp, kfrq*1.001, 1
+asig3	oscili  kenv*iamp, kfrq*.999, 1
+asig4	foscil  kenv, kfrq+klfo, 1, 2, kindex
+
+
+
+amix	= asig1+(asig2*0.4)+(asig3*0.4)+(asig4*0.03)
+
+anoise	rand kfrq
+
+afilt	tone amix+(anoise*kenv*0.0002*klfo), 500
+
+aout	distort	afilt,kvibenv, gifn
+
+
+		outch 1, afilt+(aout*0.5)
+		outch 2, afilt+(aout*0.5)
 		endin
 
 
