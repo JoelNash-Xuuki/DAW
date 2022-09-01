@@ -5,7 +5,7 @@
   composer = "Vyvyan"
 }
 
-progression_a = \repeat unfold 2 \relative { 
+harmony = \repeat unfold 5 \relative { 
   <c g' a e'>1
   <d f c' e>
   <a e' a c>
@@ -24,9 +24,7 @@ progression_a = \repeat unfold 2 \relative {
   <gis' d' g b, >
 }
 
-progression_b = \repeat unfold 1 \relative { 
-  \xNotesOn
-  r2 d'
+snare = \repeat unfold 3 \relative { 
   r2 d
   r2 d
   r2 d
@@ -38,10 +36,11 @@ progression_b = \repeat unfold 1 \relative {
   r4. d2
   r2 d
   r2 d
-  r1
-  r1
+  r2 d
+  r2 d
   r2 d
   r2 d4. d4
+  r4. d2
 }
 
 progression_c = \repeat unfold 1 \relative {
@@ -94,7 +93,7 @@ progression_d = \repeat unfold 1 \relative {
 progression_e = \repeat unfold 1 \relative {
 }
 
-progression_f = \repeat unfold 2 \relative {
+bass = \repeat unfold 5 \relative {
 	
 	<c c,>4 r2.
 	<c c,>4 r2.
@@ -108,7 +107,7 @@ progression_f = \repeat unfold 2 \relative {
 	<f f,>4 r2.
 	<e e,>4 r2.
 	<e e,>4 r2.
-	<c' c,>4 r2.
+	<c c,>4 r2.
 	<a a,>4 r2.
 	<g g,>4 r2.
 	<gis gis,>4 r2.
@@ -124,7 +123,7 @@ progression_f = \repeat unfold 2 \relative {
       \clef alto
       \key c \major 
 	  r1
-      \progression_a
+      \harmony
     }
   >> 
 
@@ -134,14 +133,16 @@ progression_f = \repeat unfold 2 \relative {
     \clef bass
     \key c \major
 	r1
-    \progression_f
+    \bass
     }
   >>
-  %\new StaffGroup <<
-  %  \new Staff {
-  %    \clef percussion
-  %    %\progression_b
-  %  }
+  \new StaffGroup <<
+    \new Staff {
+      \clef percussion
+	  \xNotesOn
+  	  r2 d'
+      \snare
+    }
   %  \new Staff {
   %    \clef percussion
   %    %\progression_c
@@ -152,7 +153,7 @@ progression_f = \repeat unfold 2 \relative {
   %  }
   %  \new Staff \relative {
   %  }
-  %>>
+  >>
 >>
  \layout {}
  \midi {

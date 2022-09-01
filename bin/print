@@ -1,0 +1,3 @@
+comply ly/$1.ly
+mv $1.mid tmp/
+csound -odac proto-groove.csd
