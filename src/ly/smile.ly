@@ -24,77 +24,34 @@ harmony = \repeat unfold 5 \relative {
   <gis' d' g b, >
 }
 
-snare = \repeat unfold 3 \relative { 
-  r2 d
-  r2 d
-  r2 d
-  r2 d4. d4
-  r4. d2
-  r2 d
-  r2 d
-  r2 d4. d4
-  r4. d2
+snare = \repeat unfold 20 \relative { 
   r2 d
   r2 d
   r2 d
   r2 d
-  r2 d
-  r2 d4. d4
-  r4. d2
 }
 
-progression_c = \repeat unfold 1 \relative {
+brush = \repeat unfold 81 \relative {
 	\xNotesOn
-	r2. r8 d'
-	r2. r4
-	r2. r8 d
-	r2. r4
-
-	r2. r4
-	r2. r4
-	r2. r8 d
-	r2. r4
-
-	r2. r4
-	r2. r4
-	r2. r8 d
-	r2. r4
-	        
-	r2. r4
-	r2. r4
-	r2. r8 d
-	r2. r4
+	d'1
 }
 
-progression_d = \repeat unfold 1 \relative {
-  \clef percussion
+hihat = \repeat unfold 20 \relative {
 	\xNotesOn
-	d'8\ppp d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
-	d d d d d d d d
+	r4. \tuplet 3/2 {d64 d64 r32 r16 r4} r16 d16. r32 d8 r16 
+	r8. d16. r4. r16  d8. d16.
+	r8. d16. r4. r16  d8. d16.
+	r8. d16. r4. r16  d8. d16.
 }
 
-progression_e = \repeat unfold 1 \relative {
+kick = \repeat unfold 20 \relative {
+    r2. r8  d8
+	r2. d8 r8
+	r8 d r2 \tuplet 3/2 {d8 r d}
+	r2.\tuplet 3/2 {r8 d r}
 }
 
 bass = \repeat unfold 5 \relative {
-	
 	<c c,>4 r2.
 	<c c,>4 r2.
 	<a a,>4 r2.
@@ -113,7 +70,6 @@ bass = \repeat unfold 5 \relative {
 	<gis gis,>4 r2.
 }
 
-
 \score {
 <<
   \new StaffGroup <<
@@ -122,9 +78,10 @@ bass = \repeat unfold 5 \relative {
 	  \tempo 4 = 80
       \clef alto
       \key c \major 
-	  r1
-      \harmony
-    }
+	    r1 r r r
+	    r1
+        \harmony
+      }
   >> 
 
  \new StaffGroup <<
@@ -132,6 +89,7 @@ bass = \repeat unfold 5 \relative {
     \time 4/4
     \clef bass
     \key c \major
+	r1 r r r
 	r1
     \bass
     }
@@ -140,17 +98,27 @@ bass = \repeat unfold 5 \relative {
     \new Staff {
       \clef percussion
 	  \xNotesOn
+	  r1 r r r
   	  r2 d'
       \snare
     }
-  %  \new Staff {
-  %    \clef percussion
-  %    %\progression_c
-  %  }
-
-  %  \new Staff \relative {
-  %   %\progression_d    
-  %  }
+    \new Staff {
+      \clef percussion
+	  \xNotesOn
+	  d'1 d' d' d'
+      \brush
+    }
+	\new Staff {
+      \clef percussion
+	  r1 r r r
+	  r1
+      \hihat
+    }
+    \new Staff \relative {
+	  \clef percussion
+	 r1 r r r r
+      \kick   
+    }
   %  \new Staff \relative {
   %  }
   >>
@@ -158,5 +126,5 @@ bass = \repeat unfold 5 \relative {
  \layout {}
  \midi {
       \tempo 4 = 80   
-}
+  }
 }
