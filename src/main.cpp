@@ -25,11 +25,12 @@ int main(int argc, char **argv){
   fclose(file);
 
   Csound* csound = new Csound();
-  csound->SetOption("--realtime"); //-+rtaudio=jac
+  csound->SetOption("--realtime"); 
   csound->SetOption("-odac");
   csound->SetOption("-iadc");
   csound->SetOption("-B512");
   csound->SetOption("-b256");
+  csound->SetOption("-+rtaudio=jack");
 
   csound->Compile("/home/joel/sound-designer/src/rec.csd");
 
