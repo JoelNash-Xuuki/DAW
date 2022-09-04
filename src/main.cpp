@@ -32,7 +32,7 @@ int main(int argc, char **argv){
   csound->SetOption("-b256");
   csound->SetOption("-+rtaudio=jack");
 
-  csound->Compile("/home/joel/sound-designer/src/rec.csd");
+  csound->Compile("src/rec.csd");
 
   csound->Start();
   csound->Perform();	
