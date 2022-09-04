@@ -12,4 +12,4 @@ CC		= g++
 #	$(CC) $(MOD) -o ~/.bin/modsyn
 
 crec: $(API)
-	$(CC) $(INCLUDE) $(API) $(CSOUND) -o ~/.bin/crec 
+	$(CC) $(INCLUDE) $(API) $(CSOUND) -o ~/sound-designer/bin/crec 
