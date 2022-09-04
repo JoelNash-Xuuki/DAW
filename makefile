@@ -1,4 +1,4 @@
-API		= src/SimpleCsdPlayback.cpp 
+API		= src/main.cpp 
 CSOUND  = -lcsound64 -lcsnd6
 INCLUDE = -I/usr/include/csound/
 

@@ -1,6 +1,6 @@
 <CsoundSynthesizer>
 <CsOptions>
-%s
+-F tmp/smile.mid
 </CsOptions>
 <CsInstruments>
 
@@ -18,6 +18,7 @@ massign 6, 6
 ;massign 7, 7
 
 gifn	ftgen	0,0, 257, 9, .5,1,270
+
 #define Harmony # 1 # 
 #define Bass # 2 #
 #define Snare # 3 #
@@ -215,6 +216,7 @@ acarosc		oscili	imaxamp*aampenv, icarrfreq+amodosc, 1
 ;		endin
 
 </CsInstruments>
+
 <CsScore>
 
 f0 1000

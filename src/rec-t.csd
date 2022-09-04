@@ -3,7 +3,7 @@
 </CsOptions>
 <CsInstruments>
 
-sr = 44100
+sr= %s
 ksmps = 64
 nchnls = 2
 0dbfs  = 1
@@ -12,9 +12,11 @@ gacmb	init 0
 garvb	init 0
 
 	instr 1 
+    irvbsnd=  p4 
+    icmbsnd=  p5
 
 	ain1 inch 1
-	fout "test.wav", 14, aout
+	fout "%s", 14, ain1
    	out ain1
 
 	garvb	=		garvb+(ain1*irvbsnd)
@@ -22,8 +24,11 @@ garvb	init 0
 	endin
 
 		instr 106	
-a1		loscil 0.5, 440, p4
-		out  a1
+		ispd= p5
+		ipan= p6
+		ipch=  261.6256
+a1		loscil 0.5, ipch*ispd, p4, ipch, 0
+		outs     a1*ipan, a1*(1-ipan)
 		endin
 
 		instr	198
@@ -48,8 +53,8 @@ garvb	=		0
 
 </CsInstruments>
 <CsScore>
-f 4 0 0 1 "wav" 0 4 1
-;f 5 0 0 1 "wav" 0 4 2
+f 4 0 0 1 "%s" 0 4 1
+f 5 0 0 1 "%s" 0 4 2
 
 ;ins	strt	dur 	rvbtim	hfroll	
 ;===================================================================
@@ -60,9 +65,9 @@ i199	0		100		2.6		.1
 i198	0		100		10		.25		
 ;
 
-i 1 0 100
-i 106 0 100 4
-i 106 0 100 5
+i 1 0 100 0.1 0.1
+i 106 0 100 4 1 0 
+i 106 0 100 5 1 1
 e
 
 </CsScore>
