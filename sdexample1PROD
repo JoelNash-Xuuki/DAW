@@ -1,1 +1,1 @@
-s-d1PROD ~/audio/smile.wav ~/audio/test-vocal.wav
+s-d1PROD ~/audio/smile.wav ~/audio/$1.wav
