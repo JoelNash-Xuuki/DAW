@@ -92,7 +92,7 @@ afilt	reson	asig*0.01, kcf, kbw, 2
 
 		instr $Brush
 idur 	= 4
-iamp 	veloc 0, 0.003
+iamp 	veloc 0, 0.0003
 ifrq 	cpsmidib 1
 
 iatk	=		.2
@@ -108,7 +108,7 @@ asig	rand	ifrq
 kcf		expon	icf1, idur, icf2
 kbw		line	ibw1, idur, ibw2
 afilt	reson	asig*0.01, kcf, kbw, 2
-klfo	oscil 1, 0.33, 1
+klfo	oscil 1.5, 0.33, 1
 
 
 		outch 1, ((afilt*klfo)*kenv)*ipan
@@ -122,21 +122,29 @@ ifrq 	cpsmidib 1
 
 iatk	=		.001
 irel	=		.005
-icf1	=		25000
-icf2	=		25000
-ibw1	=		25000
-ibw2	=		25000
+icf1	=		29000
+icf2	=		29000
+ibw1	=		23000
+ibw2	=		24000
 ipan	=		0.5
+imodp1  = 10
+imodp2  = 10
+imodfr1 = 7
+imodfr2 = 1
 
 kenv	expseg	.001, iatk, iamp, idur/6, iamp*.4, idur-(iatk+irel+idur/6), iamp*.6, irel,.01
 asig	rand	ifrq
 kcf		expon	icf1, idur, icf2
 kbw		line	ibw1, idur, ibw2
-afilt	reson	asig*0.01, kcf, kbw, 2
-klfo	oscil 8, 3, 1
 
-	    outch 1, ((afilt)*kenv)*ipan
-		outch 2, ((afilt)*kenv)*(1-ipan)
+kmodpth	expon	imodp1, idur, imodp2
+kmodfrq	line	cpspch(imodfr1), idur, cpspch(imodfr2)
+
+alfo	oscil kmodpth, kmodfrq, 1
+afilt	reson	alfo, 20000, kbw, 2
+
+	    outch 1, ((afilt*kenv))*ipan
+		outch 2, ((afilt*kenv))*(1-ipan)
 		endin
 
 		instr $Kick
@@ -219,8 +227,8 @@ acarosc		oscili	imaxamp*aampenv, icarrfreq+amodosc, 1
 
 <CsScore>
 
-f0 1000
-t 0 84
+f0 80
+t 0 80
 a0 0 16
 f1 0 16384 10 1
 

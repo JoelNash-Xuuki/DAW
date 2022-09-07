@@ -5,7 +5,7 @@
   composer = "Vyvyan"
 }
 
-harmony = \repeat unfold 5 \relative { 
+harmony = \repeat unfold 1 \relative { 
   <c g' a e'>1
   <d f c' e>
   <a e' a c>
@@ -24,34 +24,62 @@ harmony = \repeat unfold 5 \relative {
   <gis' d' g b, >
 }
 
-snare = \repeat unfold 20 \relative { 
-  r2 d
-  r2 d
-  r2 d
-  r2 d
+snare = \repeat unfold 1 \relative { 
+  r2 d4 r4
+  r4 d r4 d8 r8
+  r4 \tuplet 3/2 {r8 r8 d8} r8 d r4
+  r8 r16 d16 r2. 
+  %r1 r1 r1 r1
+  %r1 r2 d r1 r1
+  %r1 r1 r1 r1
+  %r2 r
+  %r d'
+  %r r
+  %r d
+  %r1
 }
 
-brush = \repeat unfold 81 \relative {
+brush = \repeat unfold 1 \relative {
 	\xNotesOn
+	r1
 	d'1
+	r8 d2. d8
 }
 
-hihat = \repeat unfold 20 \relative {
+hihat = \repeat unfold 1 \relative {
 	\xNotesOn
-	r4. \tuplet 3/2 {d64 d64 r32 r16 r4} r16 d16. r32 d8 r16 
-	r8. d16. r4. r16  d8. d16.
-	r8. d16. r4. r16  d8. d16.
-	r8. d16. r4. r16  d8. d16.
+	r2. d8 d
+	r d r4 d r
+	r4 \tuplet 3/2 {d8 r8 r8} r4 d
+	r4. d4 d4 d8
+	
+	%d16
+	%r4. \tuplet 3/2 {d64 d64 r32 r16 r4} r16 d16. r32 d8 r16 
+	%r8. d16. r4. r16  d8. d16.
+	%r8. d16. r4. r16  d8. d16.
+	%r8. d16. r4. r16  d8. d16.
 }
 
-kick = \repeat unfold 20 \relative {
-    r2. r8  d8
-	r2. d8 r8
-	r8 d r2 \tuplet 3/2 {d8 r d}
-	r2.\tuplet 3/2 {r8 d r}
+kick = \repeat unfold 1 \relative {
+	r4 d4 r2
+	r4. d4 d d8 
+	r8 d r8 d8 d r8 r16 d r d
+	r16 d r8 r16 d r8 d
+	r8 d
+
+	%d d r8 r2.
+	%d8 d
+%	r2. r8 d
+    %r2. r8  d8
+	%r1
+	%r1
+	%r1
+	%r2. d8 r8
+	%r8 d r2 \tuplet 3/2 {d8 r d}
+	%r2.\tuplet 3/2 {r8 d r}
 }
 
-bass = \repeat unfold 5 \relative {
+bass = \repeat unfold 1 \relative {
 	<c c,>4 r2.
 	<c c,>4 r2.
 	<a a,>4 r2.
@@ -78,8 +106,7 @@ bass = \repeat unfold 5 \relative {
 	  \tempo 4 = 80
       \clef alto
       \key c \major 
-	    r1 r r r
-	    r1
+		r1 r r r
         \harmony
       }
   >> 
@@ -90,7 +117,6 @@ bass = \repeat unfold 5 \relative {
     \clef bass
     \key c \major
 	r1 r r r
-	r1
     \bass
     }
   >>
@@ -99,24 +125,26 @@ bass = \repeat unfold 5 \relative {
       \clef percussion
 	  \xNotesOn
 	  r1 r r r
-  	  r2 d'
       \snare
     }
     \new Staff {
       \clef percussion
+	  
 	  \xNotesOn
-	  d'1 d' d' d'
+	  d'1
+	  d'
+	  d'
+	  d'
       \brush
     }
 	\new Staff {
       \clef percussion
 	  r1 r r r
-	  r1
       \hihat
     }
     \new Staff \relative {
-	  \clef percussion
-	 r1 r r r r
+	 \clef percussion
+	  r1 r r r
       \kick   
     }
   %  \new Staff \relative {
