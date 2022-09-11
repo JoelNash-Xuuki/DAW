@@ -41,7 +41,7 @@ int main(int argc, char **argv){
   csound->Perform();	
   delete csound;
   
-  return 0
+  return 0;
 }
 
 string readFileContentsIntoString(const string& path) {
