@@ -3,7 +3,7 @@
 </CsOptions>
 <CsInstruments>
 
-sr= 44100
+sr= %s
 ksmps = 64
 nchnls = 2
 0dbfs  = 1
@@ -42,19 +42,19 @@ garvb	=		0
 
 </CsInstruments>
 <CsScore>
-f 4 0 0 1 "/home/joel/audio/test.wav" 0 4 0
-f 5 0 0 1 "/home/joel/audio/smile.wav" 0 4 1 ;left
-f 6 0 0 1 "/home/joel/audio/smile.wav" 0 4 2
+f 4 0 0 1 "%s" 0 4 0
+f 5 0 0 1 "%s" 0 4 1 ;left
+f 6 0 0 1 "%s" 0 4 2
 
 t 0 80
 
 ;ins	strt	dur 	rvbtim	hfroll	
 ;===================================================================
-i199	0		100		2.6		.1		
+i199	0		34		2.6		.1		
 
 ;ins	strt	dur 	time	loop	
 ;===================================================================
-i198	0		100		10		.25		
+i198	0		34		10		.25		
 ;
 i 106 0 34 0.5 4 1 0.5 
 i 106 0 16 0.85 5 1 0

@@ -3,20 +3,17 @@
 </CsOptions>
 <CsInstruments>
 
-sr= 44100
-ksmps = 64
+sr= %s
+ksmps = 16
 nchnls = 2
 0dbfs  = 1
-
-gacmb	init 0
-garvb	init 0
+;tuning = 400.9
 
 			instr 106	
-		iamp= p4
-		ispd= p6
-		ipan= p7
+		ispd= p5
+		ipan= p6
 		ipch=  261.6256
-a1		loscil iamp, ipch*ispd, p5, ipch, 0
+a1		loscil 0.5, ipch*ispd, p4, ipch, 0
 		outs     a1*ipan, a1*(1-ipan)
 		endin
 
@@ -40,11 +37,11 @@ arvb	reverb2	garvb, irvbtim, ihiatn
 garvb	=		0
 		endin
 
+
 </CsInstruments>
 <CsScore>
-f 4 0 0 1 "/home/joel/audio/test.wav" 0 4 0
-f 5 0 0 1 "/home/joel/audio/smile.wav" 0 4 1 ;left
-f 6 0 0 1 "/home/joel/audio/smile.wav" 0 4 2
+f 4 0 0 1 "%s" 0 4 1
+f 5 0 0 1 "%s" 0 4 2
 
 t 0 80
 
@@ -56,11 +53,9 @@ i199	0		100		2.6		.1
 ;===================================================================
 i198	0		100		10		.25		
 ;
-i 106 0 34 0.5 4 1 0.5 
-i 106 0 16 0.85 5 1 0
-i 106 0 16 0.85 6 1 1
-i 106 16 16 0.85 5 1 0
-i 106 16 16 0.85 6 1 1
+i 1 0 17 0.1 0.1
+i 106 0 16 4 1.2 0 
+i 106 0 16 5 1.2 1
 e
 </CsScore>
 </CsoundSynthesizer>

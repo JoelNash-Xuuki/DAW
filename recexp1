@@ -1,0 +1,2 @@
+#pass arg with same for wav file
+sd-1 ~/audio/smile.wav ~/audio/$1.wav src/rec.csd -odac

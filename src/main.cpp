@@ -4,12 +4,15 @@
 #include <fstream>
 
 using namespace std;
-
 string readFileContentsIntoString(const string& path);
 
 int main(int argc, char **argv){
   const char* recsession= argv[1];
   const char* samplerate= argv[2];
+  const char* csoundsource= argv[5];
+  const char* oO= argv[6];
+
+  string csndsrc(csoundsource);
   string sr(samplerate);
   const char* rfile= argv[3];
   string rf(rfile);
@@ -18,7 +21,7 @@ int main(int argc, char **argv){
   char newFile [250];
 
   FILE* file;
-  file = fopen ("src/rec.csd", "w");
+  file = fopen (csoundsource, "w");
   
   string contents= readFileContentsIntoString(recsession);
   fprintf(file, contents.c_str(),sr.c_str(), wf.c_str(), rf.c_str(), rf.c_str());    
@@ -26,19 +29,19 @@ int main(int argc, char **argv){
 
   Csound* csound = new Csound();
   csound->SetOption("--realtime"); 
-  csound->SetOption("-odac");
+  csound->SetOption(oO);
   csound->SetOption("-iadc");
   csound->SetOption("-B512");
   csound->SetOption("-b256");
   csound->SetOption("-+rtaudio=jack");
 
-  csound->Compile("src/rec.csd");
+  csound->Compile(csoundsource);
 
   csound->Start();
   csound->Perform();	
   delete csound;
   
-  return 0;
+  return 0
 }
 
 string readFileContentsIntoString(const string& path) {

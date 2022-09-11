@@ -16,7 +16,7 @@ garvb	init 0
     icmbsnd=  p5
 
 	ain1 inch 1
-	fout "/home/joel/audio/testy-vocal.wav", 14, ain1
+	fout "/home/joel/audio/test.wav", 14, ain1
    	out ain1
 
 	garvb	=		garvb+(ain1*irvbsnd)
@@ -56,18 +56,21 @@ garvb	=		0
 f 4 0 0 1 "/home/joel/audio/smile.wav" 0 4 1
 f 5 0 0 1 "/home/joel/audio/smile.wav" 0 4 2
 
+t 0 80
+
 ;ins	strt	dur 	rvbtim	hfroll	
 ;===================================================================
-i199	0		100		2.6		.1		
+i199	0		34		2.6		.1		
 
 ;ins	strt	dur 	time	loop	
 ;===================================================================
-i198	0		100		10		.25		
-;
+i198	0		34		10		.25		
 
-i 1 0 100 0.1 0.1
-i 106 0 100 4 1 0 
-i 106 0 100 5 1 1
+i 1 0 34  0.01 0.01
+i 106 0  16 4 1 0 
+i 106 0  16 5 1 1
+i 106 16 16 4 1 0
+i 106 16 16 5 1 1
 e
 
 </CsScore>
