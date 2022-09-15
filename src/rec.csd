@@ -16,7 +16,7 @@ garvb	init 0
     icmbsnd=  p5
 
 	ain1 inch 1
-	fout "/home/joel/audio/test.wav", 14, ain1
+	fout "/home/joel/audio/testnow.wav", 14, ain1
    	out ain1
 
 	garvb	=		garvb+(ain1*irvbsnd)

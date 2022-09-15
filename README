@@ -1,12 +1,10 @@
 To use sound-designer
 
 Add bin/scripts into command scope addbin
+
 Run runjackDev
 
-
 run ./sdexample1 file.wav to record.
-
-
 
 
 Design patch modules

@@ -11,5 +11,5 @@ CC		= g++
 #modsyn: $(MOD) 
 #	$(CC) $(MOD) -o ~/.bin/modsyn
 
-crec: $(API)
-	$(CC) $(INCLUDE) $(API) $(CSOUND) -o ~/sound-designer/bin/crec 
+daw: $(API)
+	$(CC) $(INCLUDE) $(API) $(CSOUND) -o ~/DAW/bin/daw

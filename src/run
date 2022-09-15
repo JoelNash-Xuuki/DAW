@@ -1,0 +1,2 @@
+#csound --realtime -odac.wav -iadc -B512 -b256 -+rtaudio=jack $1
+csound -odac -B512 -b256 $1
