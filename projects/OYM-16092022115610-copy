@@ -1,0 +1,6 @@
+FILE="/home/joel/projects/OYM-16092022115610"
+PROJ=$(echo ${FILE##*/})
+daw "${PROJ}" $1
+
+#-s 44100 -p -o -odac
+

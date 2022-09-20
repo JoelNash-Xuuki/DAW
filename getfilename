@@ -1,0 +1,2 @@
+FILE="/home/joel/projects/OYM-16092022115610"
+echo ${FILE##*/}

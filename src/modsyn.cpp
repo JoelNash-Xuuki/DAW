@@ -11,9 +11,7 @@ using namespace std;
 int main(int argc, char **argv){
 
   PrinterReader pr;
-
   const char* patch= argv[1];
-
   ifstream readPatchFile(patch);
   pr.readPatch();
 
@@ -183,8 +181,3 @@ int main(int argc, char **argv){
 //void print_env(ENVMOD env){
 //  printf("%s expsegr 0.01, 0.1, %s, 0.1, 0.001", env.sig_out, env.amp);
 //}
-
-
-
-
-

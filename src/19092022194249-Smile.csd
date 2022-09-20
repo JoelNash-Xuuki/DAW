@@ -2,13 +2,14 @@
 <CsOptions>
 </CsOptions>
 <CsInstruments>
+
 sr= 44100
-ksmps = 64
+ksmps = 16
 nchnls = 2
 0dbfs  = 1
 
-gacmb	init 0
-garvb	init 0
+gacmb	init	0
+garvb	init	0
 
 		instr 106	
 		ispd= p5
@@ -39,32 +40,30 @@ garvb	=		0
 
 </CsInstruments>
 <CsScore>
-f 1 0 0 1 "/home/joel/audio/test.wav" 0 4 1
-
 f 4 0 0 1 "/home/joel/audio/smile.wav" 0 4 1
 f 5 0 0 1 "/home/joel/audio/smile.wav" 0 4 2
 
 
-
-t 0 80
-
 ;ins	strt	dur 	rvbtim	hfroll	
 ;===================================================================
-i199	0		34		2.6		.1		
-
-;ins	strt	dur 	time	loop	
-;===================================================================
-i198	0		34		10		.25		
-
-i 106 0  32 1 1 0 
-
-i 106 0  12 4 1 0 
-i 106 0  12 5 1 1
-i 106 12 12 4 1 0
-i 106 12 12 5 1 1
-i 106 24 12 4 1 0
-i 106 24 12 5 1 1
-e
-
+;i199	0		100		2.6		.1		
+;
+;;ins	strt	dur 	time	loop	
+;;===================================================================
+;i198	0		100		10		.25		
+;
+;i 1 0 17 0.1 0.1
+{ 8
+  t 0 80
+  i 106 0 8 4 1 0 
+  i 106 0 8 5 1 1
+  f 0 8
+  s
+}
 </CsScore>
 </CsoundSynthesizer>
+
+
+
+
+

@@ -1,4 +1,4 @@
-comply $HOME/sound-designer/src/ly/smile.ly
-mv  smile.pdf $HOME/sound-designer/docs/
-mv smile.mid $HOME/sound-designer/src/tmp/
-csound -o$HOME/audio/smile.wav $HOME/sound-designer/src/smile.csd
+comply $HOME/DAW/src/ly/smile.ly
+mv  smile.pdf $HOME/DAW/docs/
+mv smile.mid $HOME/DAW/src/tmp/
+csound -o$HOME/audio/smile.wav $HOME/DAW/src/smile.csd

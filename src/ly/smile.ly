@@ -6,7 +6,7 @@
 }
 
 harmony = \repeat unfold 1 \relative { 
-  <c g' a e'>1
+  <c g' a e'>2.
   <d f c' e>
   <a e' a c>
   <c g' b e>
@@ -80,7 +80,7 @@ kick = \repeat unfold 1 \relative {
 }
 
 bass = \repeat unfold 1 \relative {
-	<c c,>4 r2.
+	<c c,>4 r4.
 	<c c,>4 r2.
 	<a a,>4 r2.
 	<b b,>4 r2.
