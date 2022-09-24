@@ -1,4 +1,4 @@
-comply $HOME/DAW/src/ly/smile.ly
-mv  smile.pdf $HOME/DAW/docs/
+comply $HOME/ly/smile.ly
+mv  smile.pdf $HOME/docs/
 mv smile.mid $HOME/DAW/src/tmp/
-csound -o$HOME/audio/smile.wav $HOME/DAW/src/smile.csd
+csound -odac $HOME/DAW/src/smile.csd
