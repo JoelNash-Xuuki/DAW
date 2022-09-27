@@ -3,7 +3,7 @@
 </CsOptions>
 <CsInstruments>
 
-sr= 44100
+sr= 48000
 ksmps = 64
 nchnls = 2
 0dbfs  = 1
@@ -16,8 +16,8 @@ garvb	init 0
     icmbsnd=  p5
 
 	ain1 inch 1
-	fout "/home/joel/audio/test.wav", 14, ain1
-   	out ain1
+	fout "/home/pi/audio/SMILE-22092022154025-vocal-11.wav", 14, ain1
+   	outs ain1*3.5, ain1*3.5
 
 	garvb	=		garvb+(ain1*irvbsnd)
 	gacmb	=		gacmb+(ain1*icmbsnd)
@@ -53,10 +53,13 @@ garvb	=		0
 
 </CsInstruments>
 <CsScore>
-f 4 0 0 1 "/home/joel/audio/smile.wav" 0 4 1
-f 5 0 0 1 "/home/joel/audio/smile.wav" 0 4 2
 
-t 0 80
+t 0 84
+
+f 4 0 0 1 "/home/pi/audio/SMILE-22092022154025-trim.wav" 0 4 1
+f 5 0 0 1 "/home/pi/audio/SMILE-22092022154025-trim.wav" 0 4 2
+
+;f 10 0 0 1 "/home/pi/audio/OYM-16092022115610-guitar-1.wav" 12 4 1 ; mark
 
 ;ins	strt	dur 	rvbtim	hfroll	
 ;===================================================================
@@ -66,12 +69,11 @@ i199	0		34		2.6		.1
 ;===================================================================
 i198	0		34		10		.25		
 
-i 1 0 34  0.01 0.01
-i 106 0  16 4 1 0 
-i 106 0  16 5 1 1
-i 106 16 16 4 1 0
-i 106 16 16 5 1 1
-e
+i 1 0 100  0.01 0.01
+
+i 106 0 100 4 1 0 
+i 106 0 100 5 1 1
+s
 
 </CsScore>
 </CsoundSynthesizer>
