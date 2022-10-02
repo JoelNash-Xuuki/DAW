@@ -4,6 +4,7 @@ Run runjackDev
 
 run ./sdexample1 file.wav to record.
 
+- Check if file is not getting over written.
 
 Design patch modules
 Read a midi file
